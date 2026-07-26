@@ -4,21 +4,23 @@ Use a non-production tenant or controlled pilot site. Test both webparts: a succ
 
 ## Recommended accounts
 
-- A SharePoint site owner or user with `ManageWeb`.
+- A SharePoint site owner.
 - An ordinary site member.
 - A second ordinary user with OneDrive provisioned.
 - A user with any optional licenses required by widgets in the test plan.
+- A Work IQ-enabled user for Email Copilot and Calendar Copilot tests.
 
 ## Workspace in a Box
 
-1. Add the webpart as the site manager and publish the page.
-2. Enter edit mode, add several widgets, resize and reorder them, and configure the menu.
+1. Add the webpart as the site owner and publish the page.
+2. As the site owner, add several widgets, resize and reorder them, and configure the menu.
 3. Reload the page and verify that the configuration persists.
 4. Open the page as an ordinary member.
 5. Confirm the same dashboard is visible.
-6. Confirm shared editing, removal, and reordering controls are not exposed outside the intended edit and permission context.
-7. Edit again as the manager and confirm that changes become visible to the ordinary member.
-8. Verify that the hidden `workspace` library and its configuration file are not exposed as ordinary navigation.
+6. Confirm shared editing, removal, and reordering controls are not exposed to the ordinary member.
+7. Edit again as the site owner and confirm that changes become visible to the ordinary member.
+8. Verify that the hidden, versioned `WorkspaceInABoxConfiguration` library and its configuration file are not exposed as ordinary navigation.
+9. Attempt concurrent owner edits and confirm an older save cannot silently overwrite a newer configuration.
 
 ## My Workspace in a Box
 
@@ -43,6 +45,8 @@ Test a representative group before attempting the complete catalog:
 - licensed experiences: Copilot and any entitlement-controlled widgets.
 
 For each tested widget, verify add, initial load, empty state, configuration, refresh, resize, reorder, removal, theme, and narrow-width behavior.
+
+For Email Copilot and Calendar Copilot, first complete the [Work IQ tenant prerequisite](WORK-IQ.md), then verify both read and confirmed write actions. In a separate test tenant or before provisioning, verify that missing Work IQ setup produces an understandable authorization/service error and does not affect non-Work-IQ widgets.
 
 ## Hosts and layouts
 

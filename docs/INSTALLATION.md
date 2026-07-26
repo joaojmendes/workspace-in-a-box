@@ -7,8 +7,9 @@ This guide is for SharePoint and Microsoft 365 administrators evaluating Workspa
 - SharePoint Online tenant with a tenant App Catalog.
 - Permission to upload and deploy SharePoint Framework packages.
 - Permission to review and approve SharePoint API access requests.
+- A Global Administrator for the one-time Work IQ tenant setup.
 - A modern SharePoint test site and page.
-- A site owner or user with `ManageWeb` for shared-workspace tests.
+- A site owner for shared-workspace configuration tests.
 - At least two ordinary test users for personal and permission-boundary tests.
 - OneDrive provisioned for users testing My Workspace in a Box.
 
@@ -42,14 +43,27 @@ Compare the result with the value in the `.sha256` file.
 1. Open the tenant App Catalog site.
 2. Open **Apps for SharePoint**.
 3. Upload `workspace-in-a-box.sppkg`.
-4. Confirm solution ID `f875e592-8038-4338-86c4-4e76b2a08e64` and version `1.0.0.5`.
+4. Confirm solution ID `f875e592-8038-4338-86c4-4e76b2a08e64` and version `1.0.0.6`.
 5. Review the package name, version, requested permissions, and deployment scope.
 6. Select **Enable this app and add it to all sites**.
 7. Select **Enable app** or **Deploy**, depending on the current SharePoint interface.
 
 The package includes its client-side assets. Initial deployment can require several minutes to propagate.
 
-## 3. Review and approve API access
+## 3. Enable Work IQ in the tenant
+
+> [!IMPORTANT]
+> Do not skip this step when testing Email Copilot or Calendar Copilot. If the Work IQ enterprise applications are absent, token acquisition or MCP requests can fail even when the package's API requests appear in SharePoint Admin Center.
+
+A Global Administrator must review and run the supplied idempotent PowerShell script:
+
+```powershell
+.\scripts\Enable-WorkIQTenant.ps1 -TenantId "00000000-0000-0000-0000-000000000000"
+```
+
+The script creates the Microsoft-owned Work IQ resource service principals when missing, creates the tenant-owned `WorkIQ-PublicMCPClient` app registration and enterprise application, and grants its documented delegated permissions. It uses Microsoft Graph and requires administrator consent. Read [the full Work IQ prerequisite and security notes](WORK-IQ.md) before running it.
+
+## 4. Review and approve API access
 
 Open **SharePoint Admin Center** > **Advanced** > **API access**. The package requests the following delegated permissions:
 
@@ -83,9 +97,11 @@ Open **SharePoint Admin Center** > **Advanced** > **API access**. The package re
 | Agent Tools | `McpServers.Mail.All` | Agent mail tools |
 | Agent Tools | `McpServers.Calendar.All` | Agent calendar tools |
 
+The package's Work IQ implementation calls `mcp_MailTools` and `mcp_CalendarTools` only. The two Agent Tools permissions in this table are therefore the complete Work IQ permission set required by this package. Do not add the script's broader public-client permissions to `package-solution.json`; the public client and the SharePoint Online Client Extensibility principal are separate clients.
+
 Approve only the requests permitted by your organization's security policy and required by your test plan. A widget can remain unavailable or show an authorization error when its required permission, license, service, or source data is unavailable.
 
-## 4. Add both webparts to a test page
+## 5. Add both webparts to a test page
 
 1. Open a modern SharePoint page and select **Edit**.
 2. Add **Workspace In Abox**.
@@ -96,11 +112,11 @@ Approve only the requests permitted by your organization's security policy and r
 
 The package also declares SharePoint full-page and Microsoft Teams hosts. Validate the SharePoint page experience first before expanding the test scope.
 
-## 5. Validate storage and authorization
+## 6. Validate storage and authorization
 
 ### Workspace in a Box
 
-The webpart creates a hidden SharePoint document library named `workspace` in the current site and stores one configuration file per webpart instance. A user needs appropriate site rights to create or update this configuration. Dashboard editing is intended for users with `ManageWeb`.
+On the first authorized save, the webpart creates a hidden, versioned SharePoint document library named `WorkspaceInABoxConfiguration` in the current site and stores one configuration file per webpart instance. Reads never create the library. Only site owners can configure the shared workspace. Existing configuration from the legacy hidden `workspace` library is copied to the new library on the first authorized save.
 
 ### My Workspace in a Box
 

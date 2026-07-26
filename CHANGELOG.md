@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.0.6 - 2026-07-26
+
+- Moved shared configuration to the hidden, versioned `WorkspaceInABoxConfiguration` library.
+- Create the shared library only on the first authorized site-owner save; reads remain side-effect free.
+- Copy legacy shared configuration from the hidden `workspace` library on the first authorized save.
+- Added ETag conflict protection for shared configuration updates.
+- Added the Work IQ tenant-enablement script, prerequisite warning, and Mail/Calendar Agent Tools permission audit.
+
 ## 1.0.0.5 - 2026-07-26
 
 - Added webpart resource files for all 50 SharePoint Online UI locales.
