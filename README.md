@@ -8,6 +8,8 @@ Workspace in a Box is a SharePoint Framework package containing two modern dashb
 Both webparts provide a responsive dashboard, configurable navigation, light and dark theme support, and a catalog of Microsoft 365, SharePoint, productivity, information, and business widgets.
 
 > This is a binary distribution and support repository. The source code is not published here. Use GitHub Issues to report test results, installation problems, and product defects.
+>
+> External contributions are issues only. Pull requests and direct repository changes are not accepted.
 
 [Download the latest `workspace-in-a-box.sppkg`](https://github.com/joaojmendes/workspace-in-a-box/raw/main/workspace-in-a-box.sppkg) · [Installation guide](docs/INSTALLATION.md) · [Configuration guide](docs/CONFIGURATION.md) · [Testing guide](docs/TESTING.md) · [Report a problem](https://github.com/joaojmendes/workspace-in-a-box/issues/new/choose)
 
