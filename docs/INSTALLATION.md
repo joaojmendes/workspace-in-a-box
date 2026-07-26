@@ -42,7 +42,7 @@ Compare the result with the value in the `.sha256` file.
 1. Open the tenant App Catalog site.
 2. Open **Apps for SharePoint**.
 3. Upload `workspace-in-a-box.sppkg`.
-4. Confirm solution ID `f875e592-8038-4338-86c4-4e76b2a08e64` and version `1.0.0.4`.
+4. Confirm solution ID `f875e592-8038-4338-86c4-4e76b2a08e64` and version `1.0.0.5`.
 5. Review the package name, version, requested permissions, and deployment scope.
 6. Select **Enable this app and add it to all sites**.
 7. Select **Enable app** or **Deploy**, depending on the current SharePoint interface.
@@ -107,4 +107,3 @@ The webpart creates a hidden SharePoint document library named `workspace` in th
 The webpart stores one configuration file per webpart instance under the signed-in user's OneDrive application folder. Each user should see and maintain a separate layout.
 
 Continue with the [testing guide](TESTING.md).
-

@@ -35,7 +35,7 @@ Both webparts provide a responsive dashboard, configurable navigation, light and
 - SharePoint, Microsoft Graph, Teams, Planner, Power BI, Viva Engage, Power Apps, Copilot, service health, maps, charts, and general information widgets.
 - Responsive layouts for desktop and mobile.
 - SharePoint, Microsoft Teams personal app/tab, Teams tab, and SharePoint full-page hosts.
-- English and Portuguese labels.
+- Webpart and widget labels for all 50 SharePoint Online UI locales.
 - Automatic adaptation to the active SharePoint theme.
 - Local browser cache and retry handling for interrupted saves.
 
@@ -68,7 +68,7 @@ Read the complete [installation guide](docs/INSTALLATION.md) before deploying to
 | Property | Value |
 | --- | --- |
 | Product | Workspace in a Box |
-| Current test release | `1.0.0.4` |
+| Current test release | `1.0.0.5` |
 | Solution ID | `f875e592-8038-4338-86c4-4e76b2a08e64` |
 | Workspace in a Box webpart ID | `d0f9e3a6-5c56-41f9-ba17-df942503ec2f` |
 | My Workspace in a Box webpart ID | `5e4a8764-ce0a-49cc-9d05-88d9af373d76` |
@@ -111,4 +111,3 @@ Use the [issue forms](https://github.com/joaojmendes/workspace-in-a-box/issues/n
 This repository intentionally does not contain the application source code. The downloadable `.sppkg` contains compiled assets required by SharePoint Online. Availability of the package on GitHub does not make the product open source.
 
 See [BINARY-LICENSE.md](BINARY-LICENSE.md) before downloading or installing the package.
-

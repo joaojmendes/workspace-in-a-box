@@ -52,6 +52,7 @@ Test:
 - full-width section when supported by the page;
 - desktop and mobile-width browser layouts;
 - light and dark SharePoint themes;
+- several SharePoint UI languages, including one right-to-left language;
 - Microsoft Teams personal app or tab if included in the pilot.
 
 ## Safe issue report
@@ -67,4 +68,3 @@ Record:
 - sanitized console or network error.
 
 Never attach tokens, cookies, tenant names, personal data, private URLs, OneDrive contents, mail, chat messages, or customer content.
-
