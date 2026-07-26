@@ -26,6 +26,13 @@ Before opening an issue, confirm the package version, App Catalog deployment, AP
 - Test the source directly, such as the SharePoint library or Power BI report.
 - Inspect sanitized browser console and network status codes.
 
+## License validation or registration fails
+
+- In **SharePoint Admin Center** > **Advanced** > **API access**, approve `License-manager-auth / user_impersonation`.
+- Confirm the permission request shows application ID `a4fb5e16-1059-46a6-a017-29fc3d1394b3`.
+- Confirm the browser and tenant network can reach `https://license.spteckapps.com`.
+- After approving the permission, sign out and back in or start a fresh browser session before retesting.
+
 ## Email Copilot or Calendar Copilot shows a Work IQ error
 
 - Confirm a Global Administrator completed the [Work IQ tenant prerequisite](WORK-IQ.md).

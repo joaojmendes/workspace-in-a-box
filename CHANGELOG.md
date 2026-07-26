@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.0.7 - 2026-07-26
+
+- Added the missing delegated `License-manager-auth / user_impersonation` API permission.
+- Documented the License Manager application ID, consent callback, approval step, and troubleshooting guidance.
+- Updated the production package and SHA-256 checksum.
+
 ## 1.0.0.6 - 2026-07-26
 
 - Moved shared configuration to the hidden, versioned `WorkspaceInABoxConfiguration` library.
