@@ -26,13 +26,20 @@ Before opening an issue, confirm the package version, App Catalog deployment, AP
 - Test the source directly, such as the SharePoint library or Power BI report.
 - Inspect sanitized browser console and network status codes.
 
+## Email Copilot or Calendar Copilot shows a Work IQ error
+
+- Confirm a Global Administrator completed the [Work IQ tenant prerequisite](WORK-IQ.md).
+- In **SharePoint Admin Center** > **Advanced** > **API access**, approve Agent Tools `McpServers.Mail.All` and `McpServers.Calendar.All`.
+- Confirm the user has the required Microsoft 365/Copilot license and access to the mailbox or calendar.
+- In **Microsoft 365 admin center** > **Agents** > **Tools**, confirm the required Work IQ MCP servers are allowed when that control is available in your tenant.
+- A `401` or `403`, a token-acquisition error, or an unavailable MCP server can indicate missing tenant provisioning, missing consent, licensing, or tenant policy.
+
 ## Workspace in a Box does not save
 
-- Enter SharePoint page edit mode.
-- Confirm the user has `ManageWeb` or equivalent site-management rights.
-- Confirm the site allows creation and update of the hidden `workspace` library.
+- Confirm the user is a site owner.
+- Confirm the site allows creation and update of the hidden `WorkspaceInABoxConfiguration` library.
 - Check for `403`, `404`, `409`, `429`, or `5xx` SharePoint requests.
-- Avoid simultaneous edits in multiple tabs.
+- If a `412` conflict appears, reload before saving so a manager does not overwrite a newer version.
 
 ## My Workspace in a Box does not save
 
@@ -65,4 +72,3 @@ Confirm that the page contains My Workspace in a Box, not Workspace in a Box. My
 Include package version, webpart, widget, host, browser, operating system, user role, exact steps, expected and actual behavior, and sanitized errors.
 
 Never include access tokens, cookies, passwords, tenant secrets, license tokens, personal data, mail, chats, files, or confidential URLs.
-

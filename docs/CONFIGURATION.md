@@ -8,9 +8,9 @@ The package contains two webparts that share the same dashboard experience but u
 | --- | --- | --- |
 | Intended use | Shared site dashboard | Personal dashboard |
 | Configuration owner | Current SharePoint site | Signed-in user |
-| Remote storage | Hidden `workspace` document library | OneDrive application folder |
-| Add widgets | SharePoint edit mode | Available to the signed-in user |
-| Reorder, resize, remove | Users with site-management rights in edit mode | Signed-in user |
+| Remote storage | Hidden, versioned `WorkspaceInABoxConfiguration` document library | OneDrive application folder |
+| Add widgets | Site owners | Available to the signed-in user |
+| Reorder, resize, remove | Site owners | Signed-in user |
 | Configuration shared with another user | Yes, on the same page and site | No |
 
 Each webpart instance has its own configuration filename. Removing one instance and adding a new one can create a different configuration identity.
@@ -53,5 +53,6 @@ The catalog is filtered by webpart type and may also be filtered by licensing. A
 
 Changes are cached locally and queued for remote saving. Retryable network or service errors are retried. Avoid editing the same shared workspace simultaneously in several tabs because the latest complete saved configuration can replace an earlier one.
 
-For personal workspaces, verify that OneDrive is provisioned and that `Files.ReadWrite.AppFolder` has been approved.
+The shared library is created only on the first save by an authorized site owner. A read on an unconfigured site returns an empty workspace and does not create a library. Updates use file ETags, and SharePoint library versioning provides recovery history. A legacy configuration found in the hidden `workspace` library is copied into `WorkspaceInABoxConfiguration` on the first authorized save.
 
+For personal workspaces, verify that OneDrive is provisioned and that `Files.ReadWrite.AppFolder` has been approved.

@@ -28,8 +28,7 @@ Edit the page, remove the selected webpart, and republish. This does not automat
 1. Remove both webparts from active pages.
 2. Remove or disable the app in **Apps for SharePoint**.
 3. Review and revoke API permissions that are no longer required by another solution.
-4. If approved by your data-retention policy, remove obsolete shared configuration files or the hidden `workspace` library from test sites.
+4. If approved by your data-retention policy, remove obsolete shared configuration files or the hidden `WorkspaceInABoxConfiguration` library from test sites. The legacy hidden `workspace` library can also be removed after confirming that every required configuration was copied successfully.
 5. Let users manage personal application-folder data through the approved OneDrive administration process.
 
 Do not delete configuration storage until retention, recovery, and ownership requirements have been reviewed.
-
