@@ -1,0 +1,112 @@
+name: Bug report
+description: Report a reproducible Workspace in a Box defect
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for testing. Remove tenant names, identities, tokens, license data, OneDrive data, and confidential URLs before submitting.
+  - type: input
+    id: version
+    attributes:
+      label: Package version
+      placeholder: "1.0.0.4"
+    validations:
+      required: true
+  - type: dropdown
+    id: webpart
+    attributes:
+      label: Affected webpart
+      options:
+        - Workspace in a Box
+        - My Workspace in a Box
+        - Both webparts
+        - Installation or package
+    validations:
+      required: true
+  - type: input
+    id: widget
+    attributes:
+      label: Widget
+      description: Enter the widget name or "Not applicable".
+    validations:
+      required: true
+  - type: dropdown
+    id: user_type
+    attributes:
+      label: User context
+      options:
+        - Ordinary user
+        - Site member
+        - Site owner or ManageWeb user
+        - SharePoint Administrator
+        - Global Administrator
+    validations:
+      required: true
+  - type: input
+    id: host
+    attributes:
+      label: Host, browser, and operating system
+      placeholder: "SharePoint page, Edge 140, Windows 11"
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Installation or activation
+        - API permissions or licensing
+        - Shared configuration
+        - Personal configuration
+        - Widget catalog
+        - Widget data or settings
+        - Add, remove, resize, or reorder
+        - Workspace menu
+        - Theme or responsive layout
+        - SharePoint host
+        - Microsoft Teams host
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps
+      placeholder: |
+        1. Open...
+        2. Select...
+        3. Observe...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: Sanitized diagnostics
+      description: Add sanitized status codes, console errors, or screenshots. Do not include secrets, personal data, mail, chats, files, or private URLs.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Safety checks
+      options:
+        - label: I searched existing issues.
+          required: true
+        - label: I tested the latest available release when possible.
+          required: true
+        - label: I removed confidential and security-sensitive information.
+          required: true
+

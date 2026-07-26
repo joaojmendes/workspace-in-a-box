@@ -1,0 +1,12 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Installation documentation
+    url: https://github.com/joaojmendes/workspace-in-a-box/blob/main/docs/INSTALLATION.md
+    about: Review App Catalog installation and API permission requirements.
+  - name: Testing guide
+    url: https://github.com/joaojmendes/workspace-in-a-box/blob/main/docs/TESTING.md
+    about: Follow the separate shared and personal workspace test plans.
+  - name: Troubleshooting guide
+    url: https://github.com/joaojmendes/workspace-in-a-box/blob/main/docs/TROUBLESHOOTING.md
+    about: Check common problems before filing an issue.
+
