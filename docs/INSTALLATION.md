@@ -43,7 +43,7 @@ Compare the result with the value in the `.sha256` file.
 1. Open the tenant App Catalog site.
 2. Open **Apps for SharePoint**.
 3. Upload `workspace-in-a-box.sppkg`.
-4. Confirm solution ID `f875e592-8038-4338-86c4-4e76b2a08e64` and version `1.0.0.6`.
+4. Confirm solution ID `f875e592-8038-4338-86c4-4e76b2a08e64` and version `1.0.0.7`.
 5. Review the package name, version, requested permissions, and deployment scope.
 6. Select **Enable this app and add it to all sites**.
 7. Select **Enable app** or **Deploy**, depending on the current SharePoint interface.
@@ -96,8 +96,11 @@ Open **SharePoint Admin Center** > **Advanced** > **API access**. The package re
 | Power BI Service | `Report.Read.All` | Power BI report widget |
 | Agent Tools | `McpServers.Mail.All` | Agent mail tools |
 | Agent Tools | `McpServers.Calendar.All` | Agent calendar tools |
+| License-manager-auth | `user_impersonation` | Validate and manage the signed-in user's Workspace in a Box entitlement |
 
 The package's Work IQ implementation calls `mcp_MailTools` and `mcp_CalendarTools` only. The two Agent Tools permissions in this table are therefore the complete Work IQ permission set required by this package. Do not add the script's broader public-client permissions to `package-solution.json`; the public client and the SharePoint Online Client Extensibility principal are separate clients.
+
+The License Manager request targets multi-tenant application ID `a4fb5e16-1059-46a6-a017-29fc3d1394b3` and uses `https://license.spteckapps.com/consent-complete` for the consent flow. If this permission is not approved, license validation, trial/registration, or entitlement-controlled experiences can show an authorization error or remain unavailable.
 
 Approve only the requests permitted by your organization's security policy and required by your test plan. A widget can remain unavailable or show an authorization error when its required permission, license, service, or source data is unavailable.
 

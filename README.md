@@ -75,7 +75,7 @@ Read the complete [installation guide](docs/INSTALLATION.md) before deploying to
 | Property | Value |
 | --- | --- |
 | Product | Workspace in a Box |
-| Current test release | `1.0.0.6` |
+| Current test release | `1.0.0.7` |
 | Solution ID | `f875e592-8038-4338-86c4-4e76b2a08e64` |
 | Workspace in a Box webpart ID | `d0f9e3a6-5c56-41f9-ba17-df942503ec2f` |
 | My Workspace in a Box webpart ID | `5e4a8764-ce0a-49cc-9d05-88d9af373d76` |
@@ -84,9 +84,11 @@ Read the complete [installation guide](docs/INSTALLATION.md) before deploying to
 
 ## Required API permissions
 
-The package requests delegated access for the widgets it contains. The permission set includes Microsoft Graph access to calendars, profile and directory data, files, mail, people, Teams, meetings, chats, tasks, communities, presence, and service data, together with delegated Power BI, Yammer, and Agent Tools scopes.
+The package requests delegated access for the widgets it contains. The permission set includes Microsoft Graph access to calendars, profile and directory data, files, mail, people, Teams, meetings, chats, tasks, communities, presence, and service data, together with delegated Power BI, Yammer, Agent Tools, and License Manager access.
 
 The Work IQ implementation calls only the Mail and Calendar MCP servers. The package therefore requests only `McpServers.Mail.All` and `McpServers.Calendar.All` from Agent Tools. The tenant-enablement script can provision a broader Work IQ public client for administrators and MCP testing; those additional permissions are not requested by the SPFx package.
+
+Release `1.0.0.7` also requests `License-manager-auth / user_impersonation`. This delegated permission lets the package validate and manage the signed-in user's Workspace in a Box entitlement through the SPTeck License Manager service.
 
 Approve only the permissions required by the widgets in your test plan and according to your organization's security and consent policies. See the [complete permission table](docs/INSTALLATION.md#4-review-and-approve-api-access).
 
